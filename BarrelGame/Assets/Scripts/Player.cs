@@ -14,9 +14,11 @@ public class Player : MonoBehaviour {
 	public int gravity;
 
 //=======
-	public int points;
+	public int points = 0;
 	public Text pointsText;
 	public Text curHealthText;
+
+	public bool button = false;
 //>>>>>>> origin/master
 
 	// Use this for initialization
@@ -25,6 +27,7 @@ public class Player : MonoBehaviour {
 		rb2d = gameObject.GetComponent<Rigidbody2D> ();
 		Physics2D.gravity = new Vector2 (0, -1f);
 		curHealth = 1;
+		button = false;
 
 	}
 	
@@ -43,11 +46,25 @@ public class Player : MonoBehaviour {
 		if (curHealth >= 2) {
 			curHealth =2;
 		}
+
+//		if (Input.GetKeyDown (KeyCode.Space)) 
+//		{
+//			button = true;
+//			Debug.Log("Space");
+//			
+//		} 
+//		else if (Input.GetKeyUp (KeyCode.Space))
+//		{
+//			button = false;
+//		}
+
 	}
 
 	void FixedUpdate() 
 	{
 		//gravity wird mit space geändert, so dass der player bestimmt, ob er hoch oder runter geht
+
+
 		if (Input.GetKeyDown (KeyCode.Space)) 
 		{
 			//die gravity wird um minus 1 verändert ==> die gravitationskraft wirkt nach oben statt nach unten. udn das immer *-1 das heißt b eim zweiten mal drücken sollte die gravity wieder nach unten wirken
@@ -58,6 +75,17 @@ public class Player : MonoBehaviour {
 			{
 			Physics2D.gravity = new Vector2(0, -gravity/10f);
 		}
+
+
+//		if (button = true){
+//			Physics2D.gravity = new Vector2(0, gravity/10f);
+//		}
+//
+//		else if (button = false){
+//			Physics2D.gravity = new Vector2(0, -gravity/10f);
+//		}
+
+
 		Debug.Log(Physics2D.gravity +", "+rb2d.position);
 
 		Vector3 easeVelocity = rb2d.velocity;

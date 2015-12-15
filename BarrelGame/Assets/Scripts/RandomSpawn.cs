@@ -9,6 +9,7 @@ public class RandomSpawn : MonoBehaviour {
 	public int amount;				// Anzahl der Instanzen
 	public int range;				// Verteilung in Y-Richtung
 	public float dist;				// Verteilung in X-Richtung
+	public string tagName;
 
 	public GameObject[] obstacles; 
 	private GameObject temp;
@@ -20,7 +21,7 @@ public class RandomSpawn : MonoBehaviour {
 		for (int i=0; i < amount; i++){            // Erstmaliges Erstellen der Instanzen
 
 			obstacles[i] = Instantiate(obj, new Vector2((i*dist + Random.Range(-range/4f, range/4f)), Random.Range(-range/2f, range/2f)),Quaternion.identity) as GameObject;
-
+			obstacles[i].tag = tagName;
 		}
 	}
 	
@@ -32,7 +33,10 @@ public class RandomSpawn : MonoBehaviour {
 			if (player.transform.position.x - obstacles[i].transform.position.x > 10f){
 
 				obstacles[i].transform.position = new Vector2((amount*dist + Random.Range(-range/4f, range/4f)), Random.Range(-range/2f, range/2f));
+				Debug.Log("respawn");
 			}
+
+
 		}
 	}
 }
