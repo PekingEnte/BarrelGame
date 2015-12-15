@@ -17,7 +17,7 @@ public class Damage : MonoBehaviour {
 		if(col.CompareTag ("Player")){
 			//dann kriegt er einen schaden
 			player.Damage (1);
-			
+			Debug.Log("Treffer");
 		}
 	}
 }

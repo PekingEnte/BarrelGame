@@ -47,13 +47,13 @@ public class Player : MonoBehaviour {
 			curHealth =2;
 		}
 
-//		if (Input.GetKeyDown (KeyCode.Space)) 
+//		if (Input.GetKeyDown(KeyCode.Space)) 
 //		{
 //			button = true;
 //			Debug.Log("Space");
 //			
 //		} 
-//		else if (Input.GetKeyUp (KeyCode.Space))
+//		else if (Input.GetKeyUp(KeyCode.Space))
 //		{
 //			button = false;
 //		}
@@ -64,11 +64,16 @@ public class Player : MonoBehaviour {
 	{
 		//gravity wird mit space geändert, so dass der player bestimmt, ob er hoch oder runter geht
 
+		if (button == true){
+			rb2d.AddForce(new Vector2(0,gravity));
+		}
+
 
 		if (Input.GetKeyDown (KeyCode.Space)) 
 		{
 			//die gravity wird um minus 1 verändert ==> die gravitationskraft wirkt nach oben statt nach unten. udn das immer *-1 das heißt b eim zweiten mal drücken sollte die gravity wieder nach unten wirken
 			Physics2D.gravity = new Vector2(0, gravity/10f);
+			Debug.Log("Space");
 			
 		} 
 		else if (Input.GetKeyUp (KeyCode.Space))
@@ -77,16 +82,16 @@ public class Player : MonoBehaviour {
 		}
 
 
-//		if (button = true){
+//		if (button == true){
 //			Physics2D.gravity = new Vector2(0, gravity/10f);
 //		}
 //
-//		else if (button = false){
+//		else if (button == false){
 //			Physics2D.gravity = new Vector2(0, -gravity/10f);
 //		}
 
 
-		Debug.Log(Physics2D.gravity +", "+rb2d.position);
+		//Debug.Log(Physics2D.gravity +", "+rb2d.position);
 
 		Vector3 easeVelocity = rb2d.velocity;
 		easeVelocity.y = rb2d.velocity.y;
