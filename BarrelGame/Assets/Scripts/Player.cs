@@ -12,6 +12,7 @@ public class Player : MonoBehaviour {
 
 	public int points;
 	public Text pointsText;
+	public Text curHealthText;
 
 	// Use this for initialization
 	void Start ()
@@ -26,6 +27,7 @@ public class Player : MonoBehaviour {
 	void Update () 
 	{//es soll angezeigt werden: "Bier" dahinter die anzahl der punkte
 		pointsText.text = ("Bier: " + points);
+		curHealthText.text = ("Leben:" + curHealth);
 		//wenn das leben unter 0 sinkt, stirbt der player
 		if (curHealth <= 0) {
 			
@@ -75,7 +77,7 @@ public class Player : MonoBehaviour {
 		Application.LoadLevel (1);
 		
 	}
-	void OnTriggerEnter2d(Collider2D col)
+	void OnTriggerEnter2D(Collider2D col)
 	{
 		//wenn man mit gegen den Gegenstand mit dem Tag "Bier" stößt
 		if (col.CompareTag ("Bierglas")) 
@@ -84,6 +86,10 @@ public class Player : MonoBehaviour {
 			Destroy (col.gameObject);
 			//und die punktzahl steigt um 1.
 			points += 1;
+		}
+		if (col.CompareTag ("extraBarrel"))
+		{
+			Destroy (col.gameObject);
 		}
 	}
 
