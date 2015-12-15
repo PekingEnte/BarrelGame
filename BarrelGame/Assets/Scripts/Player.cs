@@ -39,9 +39,14 @@ public class Player : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.Space)) 
 		{
 			//die gravity wird um minus 1 verändert ==> die gravitationskraft wirkt nach oben statt nach unten. udn das immer *-1 das heißt b eim zweiten mal drücken sollte die gravity wieder nach unten wirken
-			Physics2D.gravity *= -1;
+			Physics2D.gravity = new Vector2(0, 1f);
 			
 		} 
+		else if (Input.GetKeyUp (KeyCode.Space))
+			{
+			Physics2D.gravity = new Vector2(0, -1f);
+		}
+		Debug.Log(Physics2D.gravity);
 
 		Vector3 easeVelocity = rb2d.velocity;
 		easeVelocity.y = rb2d.velocity.y;
