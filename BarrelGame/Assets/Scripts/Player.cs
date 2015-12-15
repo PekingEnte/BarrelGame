@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 	//da bekommt der player physik in seinen körper
@@ -9,8 +10,14 @@ public class Player : MonoBehaviour {
 	//momentaniges leben
 	public int curHealth;
 
+<<<<<<< HEAD
 	public int gravity;
 
+=======
+	public int points;
+	public Text pointsText;
+	public Text curHealthText;
+>>>>>>> origin/master
 
 	// Use this for initialization
 	void Start ()
@@ -18,12 +25,15 @@ public class Player : MonoBehaviour {
 		rb2d = gameObject.GetComponent<Rigidbody2D> ();
 		Physics2D.gravity = new Vector2 (0, -1f);
 		curHealth = 1;
+
 	}
 	
 	// Update is called once per frame
 	void Update () 
-	{//wenn das leben unter 0 sinkt, stirbt der player
-
+	{//es soll angezeigt werden: "Bier" dahinter die anzahl der punkte
+		pointsText.text = ("Bier: " + points);
+		curHealthText.text = ("Leben:" + curHealth);
+		//wenn das leben unter 0 sinkt, stirbt der player
 		if (curHealth <= 0) {
 			
 			Die ();
@@ -76,6 +86,21 @@ public class Player : MonoBehaviour {
 		//das nächste level wird geladen, in dem ich hioghscore und so hingeschrieben hatte "Todesszene" heißt es
 		Application.LoadLevel (1);
 		
+	}
+	void OnTriggerEnter2D(Collider2D col)
+	{
+		//wenn man mit gegen den Gegenstand mit dem Tag "Bier" stößt
+		if (col.CompareTag ("Bierglas")) 
+		
+		{//dann wird dieser Gegenstand zerstört 
+			Destroy (col.gameObject);
+			//und die punktzahl steigt um 1.
+			points += 1;
+		}
+		if (col.CompareTag ("extraBarrel"))
+		{
+			Destroy (col.gameObject);
+		}
 	}
 
 }
