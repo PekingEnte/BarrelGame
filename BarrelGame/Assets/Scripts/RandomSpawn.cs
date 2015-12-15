@@ -32,7 +32,7 @@ public class RandomSpawn : MonoBehaviour {
 
 			if (player.transform.position.x - obstacles[i].transform.position.x > 10f){
 
-				obstacles[i].transform.position = new Vector2((amount*dist + Random.Range(-range/4f, range/4f)), Random.Range(-range/2f, range/2f));
+				obstacles[i].transform.position = new Vector2((amount*dist + player.transform.position.x + Random.Range(-range/4f, range/4f)), Random.Range(-range/2f, range/2f));
 				Debug.Log("respawn");
 			}
 
