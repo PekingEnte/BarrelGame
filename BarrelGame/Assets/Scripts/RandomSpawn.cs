@@ -4,11 +4,11 @@ using System.Collections;
 public class RandomSpawn : MonoBehaviour {
 
 
-	public GameObject obj;
-	public GameObject player;
-	public int amount;
-	public int range;
-	public float dist;
+	public GameObject obj;          // für welches Objekt wird das Script verwendet
+	public GameObject player;		// der Player
+	public int amount;				// Anzahl der Instanzen
+	public int range;				// Verteilung in Y-Richtung
+	public float dist;				// Verteilung in X-Richtung
 
 	public GameObject[] obstacles; 
 	private GameObject temp;
@@ -17,10 +17,9 @@ public class RandomSpawn : MonoBehaviour {
 	void Start () {
 		obstacles = new GameObject[amount];
 
-		for (int i=0; i < amount; i++){
+		for (int i=0; i < amount; i++){            // Erstmaliges Erstellen der Instanzen
 
 			obstacles[i] = Instantiate(obj, new Vector2((i*dist + Random.Range(-range/4f, range/4f)), Random.Range(-range/2f, range/2f)),Quaternion.identity) as GameObject;
-			//obstacles[i].transform.position = ;
 
 		}
 	}
@@ -28,7 +27,12 @@ public class RandomSpawn : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+		for (int i=0; i < amount; i++){				// Zurücksetzen der Insatnzen
 
+			if (player.transform.position.x - obstacles[i].transform.position.x > 10f){
 
+				obstacles[i].transform.position = new Vector2((amount*dist + Random.Range(-range/4f, range/4f)), Random.Range(-range/2f, range/2f));
+			}
+		}
 	}
 }

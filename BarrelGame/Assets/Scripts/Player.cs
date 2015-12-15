@@ -10,14 +10,14 @@ public class Player : MonoBehaviour {
 	//momentaniges leben
 	public int curHealth;
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
 	public int gravity;
 
-=======
+//=======
 	public int points;
 	public Text pointsText;
 	public Text curHealthText;
->>>>>>> origin/master
+//>>>>>>> origin/master
 
 	// Use this for initialization
 	void Start ()
