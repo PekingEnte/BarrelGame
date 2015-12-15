@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+//das script sorgt dafür dass es smooth ist, brauchen wir grad nicht, weil ich die cam an den player rangemacht habe und ich denke, dass es besser so ist
 public class CameraFollow : MonoBehaviour {
 	
 	private Vector2 velocity;
