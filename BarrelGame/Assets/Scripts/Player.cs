@@ -134,6 +134,10 @@ public class Player : MonoBehaviour {
 		{
 			Destroy (col.gameObject);
 		}
+		if (col.CompareTag ("Hindernis"))
+		{
+			Destroy (col.gameObject);
+		}
 	}
 
 }

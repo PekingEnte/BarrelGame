@@ -11,7 +11,7 @@ public class Damage : MonoBehaviour {
 		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player>();
 		
 	}
-	//wenn das barrel den "player" berührt
+	//wenn die spikes den "player" berührt
 	void OnTriggerEnter2D(Collider2D col){
 		
 		if(col.CompareTag ("Player")){
